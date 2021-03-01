@@ -19,8 +19,8 @@ public class Weather {
         numberFormat.setMaximumFractionDigits(0);
 
         this.dayOfWeek = convertTimeStampToDay(timeStamp);
-        this.minTemp = numberFormat.format(minTemp) + "\u00B0F";
-        this.maxTemp = numberFormat.format(maxTemp) + "\u00B0F";
+        this.minTemp = numberFormat.format(convertFahrenheitCelcius((int)minTemp)) + "\u00B0C";
+        this.maxTemp = numberFormat.format(convertFahrenheitCelcius((int)maxTemp)) + "\u00B0C";
         this.humidity = NumberFormat.getPercentInstance().format(humidity / 100.0);
         this.description = description;
         this.iconURL = "http://openweathermap.org/img/w/" + iconName + ".png";
@@ -36,5 +36,11 @@ public class Weather {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE");
 
         return simpleDateFormat.format(calendar.getTime());
+    }
+
+    private static double convertFahrenheitCelcius(int temp){
+        double tempFinal=(temp-32)*5/9;
+
+        return tempFinal;
     }
 }

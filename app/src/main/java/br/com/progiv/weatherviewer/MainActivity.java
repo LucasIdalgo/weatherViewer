@@ -25,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private WeatherArrayAdapter weatherArrayAdapter;
     private ListView weatherListView; //exibe as informações de previsão
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
                 //oculta o teclado e inicia uma GetWeatherTask para o download
                 // de dados climáticos de OpenWeatherMap.org em uma thread separada
-
                 if(url != null){
                     dismissKeyboard(locationEditText);
                     GetWeatherTask getLocalWeatherTask = new GetWeatherTask();

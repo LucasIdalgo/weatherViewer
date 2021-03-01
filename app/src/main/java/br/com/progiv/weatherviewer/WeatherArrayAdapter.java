@@ -1,6 +1,5 @@
 package br.com.progiv.weatherviewer;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,8 +35,7 @@ public class WeatherArrayAdapter extends ArrayAdapter<Weather> {
         super(context, -1, forecast);
     }
 
-    //Cria as views personalizadas para os itens de ListView:
-    @SuppressLint("StringFormatInvalid")
+    //Cria as views personalizadas para os itens de ListView
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //obtém objeto Weather para esta posição de ListView especificada
@@ -75,7 +73,7 @@ public class WeatherArrayAdapter extends ArrayAdapter<Weather> {
         viewHolder.hiTextView.setText(context.getString(R.string.high_temp, day.maxTemp));
         viewHolder.humidityTextView.setText(context.getString(R.string.humidity, day.humidity));
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 
     //AsyncTask para carregar ícones de condição em uma thread separada
